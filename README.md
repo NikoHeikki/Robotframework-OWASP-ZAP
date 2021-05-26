@@ -1,5 +1,5 @@
 # Robotframework-OWASP-ZAP
-Run robotframework UI tests in Zalenium(Selenium Grid Kubernetes version) with ability to proxy all test http/https traffic OWASP Zed Attack Proxy for passive/active scan, it injects ZAP root CA certificate into Zalenium so you dont have to worry abotu ssl insecure certificate errors related to ZAP. This demo runs ZAP and Zalenium as Docker containers.
+Run robotframework UI tests in Zalenium(Selenium Grid container version) with ability to proxy all test http/https traffic OWASP Zed Attack Proxy for passive/active scan, it injects ZAP root CA certificate into Zalenium so you dont have to worry abotu ssl insecure certificate errors related to ZAP. This demo runs ZAP and Zalenium as Docker containers.
 
 ## Run demo
 
