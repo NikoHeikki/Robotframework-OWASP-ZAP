@@ -1,0 +1,39 @@
+version: '2'
+services:
+
+  selenium:
+    image: elgalu/selenium:latest
+    user: "1000"
+    privileged: true
+    restart: always
+    networks:
+      - zap-network
+
+
+  zalenium:
+    image: dosel/zalenium
+    command: start
+    privileged: true
+    restart: always
+    ports:
+      - "4444:4444"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/videos:/home/seluser/videos
+    networks:
+      - zap-network
+
+
+
+
+  owasp-zap:
+    image: owasp/zap2docker-stable
+    command: zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true -config proxy.behindnat=false -config api.disablekey=true -addoninstall openapi
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - zap-network
+networks:
+  zap-network:
+    driver: bridge
